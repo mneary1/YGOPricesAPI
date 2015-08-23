@@ -44,6 +44,21 @@ class YGOPriceAPI():
         if rarity:
             url += "?rarity=" + rarity
         return self.__make_request(url)
-        
+
+    def get_card_names(self):
+        url = self.url + "card_names"
+        return self.__make_request(url)
+
+    def get_card_data(self, name):
+        url = self.url + "card_data/" + name
+        return self.__make_request(url)
+
+    def get_card_versions(self, name):
+        url = self.url + "card_versions/" + name
+        return self.__make_request(url)
+
+    def get_card_support(self, name):
+        url = self.url + "card_support/" + name
+        return self.__make_request(url)
 
 

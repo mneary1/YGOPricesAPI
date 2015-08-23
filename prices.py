@@ -11,13 +11,8 @@ class YGOPriceAPI():
             print request
             print "Request status not OK. Returning None..."
             return 
-        
-        json_response = request.json()
-        if json_response['status'] == "fail":
-            print json_response['message']
-            return
 
-        return json_response
+        return request.json()
 
     def get_price_by_name(self, name):
         url = self.url + "get_card_prices/" + name  
@@ -30,6 +25,14 @@ class YGOPriceAPI():
             print url
         else:
             url += "price_for_print_tag/" + tag
+        return self.__make_request(url)
+
+    def get_set_data(self, set_name):
+        url = self.url + "set_data/" + set_name
+        return self.__make_request(url)
+    
+    def get_sets(self):
+        url = self.url + "card_sets"
         return self.__make_request(url)
 
     

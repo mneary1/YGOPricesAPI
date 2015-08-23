@@ -23,8 +23,13 @@ class YGOPriceAPI():
         url = self.url + "get_card_prices/" + name  
         return self.__make_request(url)
 
-    def get_price_by_tag(self, tag):
-        url = self.url + "price_for_print_tag/" + tag
+    def get_price_by_tag(self, tag, rarity=None):
+        url = self.url 
+        if rarity:
+            url += "price_history/" + tag + "?rarity=" + rarity
+            print url
+        else:
+            url += "price_for_print_tag/" + tag
         return self.__make_request(url)
 
     

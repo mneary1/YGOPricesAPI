@@ -1,6 +1,6 @@
 import requests
 
-class YGOPriceAPI():
+class YGOPricesAPI():
     def __init__(self):
         self.url = "http://yugiohprices.com/api/"
 

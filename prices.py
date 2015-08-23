@@ -35,4 +35,15 @@ class YGOPriceAPI():
         url = self.url + "card_sets"
         return self.__make_request(url)
 
-    
+    def get_rising_and_falling(self):
+        url = self.url + "rising_and_falling"
+        return self.__make_request(url)
+
+    def get_top_100(self, rarity=None):
+        url = self.url + "top_100_cards"
+        if rarity:
+            url += "?rarity=" + rarity
+        return self.__make_request(url)
+        
+
+

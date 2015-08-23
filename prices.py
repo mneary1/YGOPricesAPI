@@ -4,14 +4,6 @@ class YGOPriceAPI():
     def __init__(self):
         self.url = "http://yugiohprices.com/api/"
 
-    def get_price_by_name(self, name):
-        url = self.url + "get_card_prices/" + name  
-        return __make_request(url)
-
-    def get_price_by_tag(self, tag):
-        url = self.url + "price_for_print_tag/" + tag
-        return __make_request(url)
-
     def __make_request(self, url):
         request = requests.get(url)
         
@@ -26,3 +18,13 @@ class YGOPriceAPI():
             return
 
         return json_response
+
+    def get_price_by_name(self, name):
+        url = self.url + "get_card_prices/" + name  
+        return self.__make_request(url)
+
+    def get_price_by_tag(self, tag):
+        url = self.url + "price_for_print_tag/" + tag
+        return self.__make_request(url)
+
+    

@@ -11,9 +11,9 @@ class YGOPricesAPI():
         request = requests.get(url)
 
         if request.status_code != 200:
-            print(request)
-            print("Request status not OK. Returning None...")
-            return
+            status_code = request.status_code
+            reason = request.reason
+            raise Exception(f'Status code: {status_code} Reason: {reason}')
 
         return request.json()
 
@@ -27,7 +27,6 @@ class YGOPricesAPI():
         url = self.url
         if rarity:
             url += "price_history/" + tag + "?rarity=" + rarity
-            print(url)
         else:
             url += "price_for_print_tag/" + tag
         return self.__make_request(url)

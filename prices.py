@@ -1,6 +1,8 @@
 import requests
 
+
 class YGOPricesAPI():
+
     def __init__(self):
         self.url = "http://yugiohprices.com/api/"
 
@@ -8,8 +10,8 @@ class YGOPricesAPI():
         request = requests.get(url)
         
         if request.status_code != 200:
-            print request
-            print "Request status not OK. Returning None..."
+            print(request)
+            print("Request status not OK. Returning None...")
             return 
 
         return request.json()
@@ -22,7 +24,7 @@ class YGOPricesAPI():
         url = self.url 
         if rarity:
             url += "price_history/" + tag + "?rarity=" + rarity
-            print url
+            print(url)
         else:
             url += "price_for_print_tag/" + tag
         return self.__make_request(url)
@@ -60,5 +62,3 @@ class YGOPricesAPI():
     def get_card_support(self, name):
         url = self.url + "card_support/" + name
         return self.__make_request(url)
-
-
